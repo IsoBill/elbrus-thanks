@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Task } from '../../app/type/Task';
+import { Task } from '../../app/type/Student';
 import { AppContext } from '../../app/type/providers/context';
 import { useDispatch } from 'react-redux';
 // import './FormAddTask.scss';

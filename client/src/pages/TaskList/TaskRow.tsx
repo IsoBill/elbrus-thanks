@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TaskRow.scss';
-import { Task } from '../../app/type/Task';
+import { Task } from '../../app/type/Student';
 import ModalWindow from './ui/modal/ModalPage';
 import FormUpdate from './FormUpdate';
 import { useDispatch } from 'react-redux';
