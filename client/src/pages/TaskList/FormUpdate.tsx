@@ -1,22 +1,21 @@
 import type { SetStateAction } from 'react';
-import React, { useContext, useState } from 'react';
-import { Task } from '../../app/type/Student';
-import { AppContext } from '../../app/type/providers/context';
+import React, {  useState } from 'react';
+import {type Student } from '../../app/type/Student';
 import { useDispatch } from 'react-redux';
 
 type FormUpdateAddProps = {
-  task: Task;
+  student: Student;
   onClose: (value: SetStateAction<boolean>) => void;
 };
 
-function FormUpdate({ task, onClose }: FormUpdateAddProps): JSX.Element {
-  const [text, setText] = useState(task.text);
+function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
+  const [text, setText] = useState(student.name);
   const dispatch = useDispatch();
 
   const onhadleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
-    const data: { message: string; task: Task } = await (
-      await fetch(`/api/tasks/${task.id}/update`, {
+    const data: { message: string; student: Student } = await (
+      await fetch(`/api/${student.id}/update`, {
         method: 'PUT',
         headers: {
           'Content-type': 'Application/json',
@@ -28,7 +27,7 @@ function FormUpdate({ task, onClose }: FormUpdateAddProps): JSX.Element {
     ).json();
 
     if (data.message === 'success') {
-      dispatch({ type: 'tasks/update', payload: data.task });
+      dispatch({ type: 'student/update', payload: data.student });
       onClose((prev) => !prev);
     }
   };

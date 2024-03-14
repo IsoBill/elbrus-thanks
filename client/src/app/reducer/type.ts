@@ -1,23 +1,23 @@
-import { Task, TaskId } from '../type/Student';
+import { Student, StudentId } from '../type/Student';
 
 export type State = {
-  tasks: Task[];
+  students: Student[];
 };
 
 export type Action =
   | {
-      type: 'tasks/load';
-      payload: Task[];
+      type: 'students/load';
+      payload: Student[];
     }
   | {
-      type: 'tasks/add';
-      payload: Task;
+      type: 'students/add';
+      payload: Student;
     }
   | {
-      type: 'tasks/remove';
-      payload: TaskId;
+      type: 'students/remove';
+      payload: StudentId;
     }
   | {
-      type: 'tasks/update';
-      payload: Task;
+      type: 'students/update';
+      payload: Student;
     };
