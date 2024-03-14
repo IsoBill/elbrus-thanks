@@ -55,6 +55,7 @@ router.put('/:id/thanks', async (req, res) => {
   try {
     const { id } = req.params;
     const { thanks } = req.body;
+    console.log(thanks);
     const result = await Student.update({ thanks }, { where: { id } });
     if (result[0]) {
       const student = await Student.findOne({ where: { id } });
