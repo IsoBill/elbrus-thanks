@@ -6,17 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   User.init(
     {
-      name: {
-        allowNull: false,
-        type: DataTypes.TEXT,
-      },
       login: {
         allowNull: false,
         unique: true,
-        type: DataTypes.TEXT,
-      },
-      email: {
-        allowNull: false,
         type: DataTypes.TEXT,
       },
       password: {
