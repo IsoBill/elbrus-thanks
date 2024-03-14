@@ -2,14 +2,15 @@ import React from 'react';
 import './StudentItem.scss';
 
 type StudentItemProps = {
+    student:Student
 }
 
-export function StudentItem({}: StudentItemProps): JSX.Element {
+export function StudentItem({student}: StudentItemProps): JSX.Element {
   return (
     <div className='StudentItem'>
-        <div>Name</div>
-        <div>Phase</div>
-        <div>Thanks</div>
+        <div>{student.name}</div>
+        <div>{student.name}</div>
+        <div>{student.name}</div>
     </div>
   );
 }
