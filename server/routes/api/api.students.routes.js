@@ -44,7 +44,7 @@ router.put('/:id', async (req, res) => {
       const student = await Student.findOne({ where: { id } });
       res.status(200).json({ message: 'success', student });
     } else {
-      res.status(400).json({ message: 'Не удалось изменить студента!' });
+      res.status(400).json({ message: 'Не удалось изменить данные студента!' });
     }
   } catch ({ message }) {
     res.status(500).json({ error: message });
