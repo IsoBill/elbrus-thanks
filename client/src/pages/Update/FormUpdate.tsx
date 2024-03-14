@@ -1,14 +1,12 @@
-import type { SetStateAction } from 'react';
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {type Student } from '../../../app/type/Student';
+import { Student } from '../../app/type/Student';
 
 type FormUpdateAddProps = {
   student: Student;
-  onClose: (value: SetStateAction<boolean>) => void;
 };
 
-function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
+function FormUpdate({ student }: FormUpdateAddProps): JSX.Element {
   const [name, setName] = useState(student.name);
   const [phase, setPhase] = useState(student.phase);
   const dispatch = useDispatch();
@@ -22,14 +20,14 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
           'Content-type': 'Application/json',
         },
         body: JSON.stringify({
-          text,
+          name,
+          phase,
         }),
       })
     ).json();
 
     if (data.message === 'success') {
       dispatch({ type: 'student/update', payload: data.student });
-      onClose((prev) => !prev);
     }
   };
 
@@ -43,7 +41,7 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          type="text"
+          type="number"
           placeholder="phase"
           value={phase}
           onChange={(e) => setPhase(e.target.value)}

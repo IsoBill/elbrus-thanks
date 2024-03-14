@@ -1,10 +1,10 @@
-import { Action, State } from './type';
+import { Action, State } from '../../../app/reducer/type';
 
 export const initialState: State = {
   students: [],
 };
 
-export const reducer = (state: State = initialState, action: Action): State => {
+export const stundentsReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case 'students/load':
       return { ...state, students: action.payload };
