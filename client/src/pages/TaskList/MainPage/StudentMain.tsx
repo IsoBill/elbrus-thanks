@@ -1,29 +1,33 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useEffect } from 'react';
 import { RootState } from '../../../redux/store';
 import SearchForm from '../SearchForm/SearchForm';
+import { Student } from '../../../app/type/Student';
+import { useDispatch } from 'react-redux';
 // import './StudentMain.scss';
 
 type StudentMainProps = {};
 
 export function StudentMain({}: StudentMainProps): JSX.Element {
-  const students = useSelector((store: RootState) => store.students);
+//   const students = useSelector((store: RootState) => store.students);
   const dispatch = useDispatch();
 
-  const loadStudents= async():Promise<void>{
-    const data: { message: string; students[] } = await (await fetch('api/tasks')).json();
-    // setTasks(data.tasks);
-    dispatch({ type: 'tasks/load', payload: data.students });
+  const loadStudents= async():Promise<void>=>{
+    const data: { message: string; students:Student[] } = await (await fetch("/api/student")).json()
+    console.log(data);
+    dispatch({type:"students/load",payload:data.students})
+    
   };
 
   useEffect(() => {
-    loadTasks();
+    loadStudents();
   }, []);
-  }
+  
 
   return (
 
     <div className="StudentMain">
-        <p>fdfd</p>
+        <p>Test</p>
         <SearchForm />
       {students.map((student) => {
         <StudentItem student={student} key={student.id} />;
