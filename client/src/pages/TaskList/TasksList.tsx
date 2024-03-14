@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Task } from '../../app/type/Task';
+import { Task } from '../../app/type/Student';
 import TaskRow from './TaskRow';
 import FormAddTask from './FormAddTask';
 import { useDispatch, useSelector } from 'react-redux';

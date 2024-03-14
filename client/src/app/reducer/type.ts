@@ -1,4 +1,4 @@
-import { Task, TaskId } from '../type/Task';
+import { Task, TaskId } from '../type/Student';
 
 export type State = {
   tasks: Task[];
