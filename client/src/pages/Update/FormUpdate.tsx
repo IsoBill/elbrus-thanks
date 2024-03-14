@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/consistent-type-imports */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import React, { SetStateAction, useState } from 'react';
+import { useAppDispatch } from '../../redux/store';
 import { Student } from '../../app/type/Student';
 
 type FormUpdateAddProps = {
   student: Student;
+  onClose: (value: SetStateAction<boolean>) => void;
 };
 
-function FormUpdate({ student }: FormUpdateAddProps): JSX.Element {
+function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
   const [name, setName] = useState(student.name);
   const [phase, setPhase] = useState(student.phase);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const onhadleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const data: { message: string; student: Student } = await (
-      await fetch(`/api/${student.id}`, {
+      await fetch(`/api/student/${student.id}`, {
         method: 'PUT',
         headers: {
           'Content-type': 'Application/json',
@@ -27,7 +32,8 @@ function FormUpdate({ student }: FormUpdateAddProps): JSX.Element {
     ).json();
 
     if (data.message === 'success') {
-      dispatch({ type: 'student/update', payload: data.student });
+      dispatch({ type:'students/update', payload: data.student });
+      onClose((prev)=> !prev)
     }
   };
 
