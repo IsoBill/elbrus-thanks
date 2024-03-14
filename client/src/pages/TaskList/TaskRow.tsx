@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './TaskRow.scss';
 import { Task } from '../../app/type/Student';
 import ModalWindow from './ui/modal/ModalPage';
-import FormUpdate from './FormUpdate';
+import FormUpdate from './Update/FormUpdate';
 import { useDispatch } from 'react-redux';
 
 type TaskRowProps = {
