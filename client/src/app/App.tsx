@@ -1,6 +1,9 @@
 import React, { useMemo, useReducer } from 'react';
-import TasksList from '../pages/TaskList/TasksList';
+// import TasksList from '../pages/TaskList/TasksList';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import NavBar from '../pages/TaskList/NavBar/NavBar';
+import MainPage from '../pages/TaskList/MainPage/MainPage';
 
 function App(): JSX.Element {
   // const [state, dispatch] = useReducer(reducer, initialState);
@@ -8,8 +11,9 @@ function App(): JSX.Element {
 
   return (
     <div className="App">
-      <h2>Список задач</h2>
-      <TasksList />
+      <NavBar />
+      {/* <TasksList /> */}
+      <MainPage/>
     </div>
   );
 }
