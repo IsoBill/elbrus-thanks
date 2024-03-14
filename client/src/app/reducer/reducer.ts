@@ -1,21 +1,21 @@
 import { Action, State } from './type';
 
 export const initialState: State = {
-  tasks: [],
+  students: [],
 };
 
 export const reducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
-    case 'tasks/load':
-      return { ...state, tasks: action.payload };
-    case 'tasks/add':
-      return { ...state, tasks: [...state.tasks, action.payload] };
-    case 'tasks/remove':
-      return { ...state, tasks: state.tasks.filter((task) => task.id !== action.payload) };
-    case 'tasks/update':
+    case 'students/load':
+      return { ...state, students: action.payload };
+    case 'students/add':
+      return { ...state, students: [...state.students, action.payload] };
+    case 'students/remove':
+      return { ...state, students: state.students.filter((student) => student.id !== action.payload) };
+    case 'students/update':
       return {
         ...state,
-        tasks: state.tasks.map((task) => (task.id === action.payload.id ? action.payload : task)),
+        students: state.students.map((student) => (student.id === action.payload.id ? action.payload : student)),
       };
     default:
       return state;
