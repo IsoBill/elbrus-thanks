@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect } from 'react';
-import { RootState, useAppDispatch } from '../../redux/store';
-import SearchForm from './SearchForm';
-import { Student } from '../../app/type/Student';
 import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
+import { useAppDispatch } from '../../redux/store';
+import SearchForm from './SearchForm';
+import type { Student } from '../../app/type/Student';
 import StudentItem from './StudentItem';
 
 export function StudentsPage(): JSX.Element {
@@ -16,15 +18,55 @@ export function StudentsPage(): JSX.Element {
 
     dispatch({ type: 'students/load', payload: data.students });
   };
+  console.log(23);
+  
 
   useEffect(() => {
     loadStudents();
   }, []);
 
+  const phase1 = async (): Promise<void> => {
+    const responce = await fetch('/api/student/phase1', {
+      method: 'GET',
+      headers: { 'Content-type': 'Application/json' },
+    });
+    const res: { message: string; students: Student[] } = await responce.json();
+    console.log(res);
+    dispatch({ type: 'students/load', payload: res.students });
+  };
+  const phase2 = async (): Promise<void> => {
+    const responce = await fetch('/api/student/phase2', {
+      method: 'GET',
+      headers: { 'Content-type': 'Application/json' },
+    });
+    const res: { message: string; students: Student[] } = await responce.json();
+    console.log(res);
+    dispatch({ type: 'students/load', payload: res.students });
+  };
+  const phase3 = async (): Promise<void> => {
+    const responce = await fetch('/api/student/phase3', {
+      method: 'GET',
+      headers: { 'Content-type': 'Application/json' },
+    });
+    const res: { message: string; students: Student[] } = await responce.json();
+    // console.log(res);
+    dispatch({ type: 'students/load', payload: res.students });
+  };
+
+  // const sortDown = async (): Promise<void> =>{
+  //   const responce=await fetch("/api/student/sort",{method:"GET", headers: { 'Content-type': 'Application/json' },body:JSON.stringify({students})})
+  // }
+
   return (
     <div className="StudentMain">
       <h2>Test</h2>
       <SearchForm />
+      {/* <button type='button' onClick={sortDown}>sortDown</button>
+      <button type='button'>sortup</button> */}
+
+      <button onClick={phase1}>Phase1</button>
+      <button onClick={phase2}>Phase2</button>
+      <button onClick={phase3}>Phase3</button>
       {students.map((student) => (
         <StudentItem student={student} key={student.id} />
       ))}

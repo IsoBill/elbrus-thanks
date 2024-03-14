@@ -4,6 +4,7 @@ const { Student } = require('../../db/models');
 router.get('/', async (req, res) => {
   try {
     const students = await Student.findAll();
+    students.sort((a, b) => b.thanks - a.thanks);
     res.status(200).json({ message: 'success', students });
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -63,6 +64,31 @@ router.put('/:id/thanks', async (req, res) => {
     } else {
       res.status(400).json({ message: 'Не удалось добавить "Спасибо" !' });
     }
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+});
+
+router.get('/phase1', async (req, res) => {
+  try {
+    const students = await Student.findAll({ where: {phase: 1} });
+    res.status(200).json({ message: 'success', students });
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+});
+router.get('/phase2', async (req, res) => {
+  try {
+    const students = await Student.findAll({ where: {phase: 2} });
+    res.status(200).json({ message: 'success', students });
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+});
+router.get('/phase3', async (req, res) => {
+  try {
+    const students = await Student.findAll({ where: {phase: 3} });
+    res.status(200).json({ message: 'success', students });
   } catch ({ message }) {
     res.status(500).json({ error: message });
   }
