@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -18,8 +19,6 @@ export function StudentsPage(): JSX.Element {
 
     dispatch({ type: 'students/load', payload: data.students });
   };
-  console.log(23);
-  
 
   useEffect(() => {
     loadStudents();
@@ -64,9 +63,15 @@ export function StudentsPage(): JSX.Element {
       {/* <button type='button' onClick={sortDown}>sortDown</button>
       <button type='button'>sortup</button> */}
 
-      <button onClick={phase1}>Phase1</button>
-      <button onClick={phase2}>Phase2</button>
-      <button onClick={phase3}>Phase3</button>
+      <button type="button" onClick={phase1}>
+        Phase1
+      </button>
+      <button type="button" onClick={phase2}>
+        Phase2
+      </button>
+      <button type="button" onClick={phase3}>
+        Phase3
+      </button>
       {students.map((student) => (
         <StudentItem student={student} key={student.id} />
       ))}
