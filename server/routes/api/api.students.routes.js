@@ -11,16 +11,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
-  let student;
-  try {
-    const { name } = req.body;
-    student = await Student.create({ name, phase: 1, like: 0 });
-    res.status(200).json({ message: 'success', student });
-  } catch ({ message }) {
-    res.status(500).json({ error: message });
-  }
-});
 
 router.delete('/:id', async (req, res) => {
   try {
@@ -74,18 +64,17 @@ router.post('/', async (req, res) => {
   try {
     const { name } = req.body;
     student = await Student.findOne({ where: { name } });
-    console.log(movie);
     if (student) {
       res.status(400).json({ message: 'This student is already exist, rename him' });
       return;
     }
     student = await Student.create({
-      name
+      name, thanks:0, phase:1
     });
 
     if (student) {
-      movie = await Student.findOne({ where: { name}});
-      res.status(201).json({ message: 'success', movie });
+      student = await Student.findOne({ where: {name}});
+      res.status(201).json({ message: 'success', student });
     }
     res.status(400).json();
   } catch ({ message }) {
