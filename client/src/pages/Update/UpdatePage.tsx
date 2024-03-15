@@ -10,6 +10,7 @@ import './UpdatePage.scss';
 export function UpdatePage(): JSX.Element {
   const students = useSelector((store: RootState) => store.students.students);
   const dispatch = useAppDispatch();
+  const user = useSelector((store: RootState) => store.auth.user);
 
   const loadStudents = async (): Promise<void> => {
     const data: { message: string; students: Student[] } = await (
@@ -51,8 +52,21 @@ export function UpdatePage(): JSX.Element {
     dispatch({ type: 'students/load', payload: res.students });
   };
 
-  return (
-    <div className="UpdatePage">
+  
+    
+    // <div className="UpdatePage">
+    //   <h2>Update page</h2>
+      
+    //   <FormAddStudent />
+    //   {students.map((student) => (
+    //     <UpdateStudent student={student} key={student.id} />
+    //   ))}
+    
+    // </div>
+    return (
+      <div>
+        {user ? (
+          <div className="UpdatePage">
       <h2>Update page</h2>
       
       <FormAddStudent />
@@ -61,7 +75,12 @@ export function UpdatePage(): JSX.Element {
       ))}
     
     </div>
-  );
+        ) : (
+          <a href="/">Залогинься!</a>
+        )}
+      </div>
+    );
+  ;
 }
 
 export default UpdatePage;
