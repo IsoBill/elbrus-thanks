@@ -2,7 +2,7 @@ import type { Action, State } from '../../../redux/type';
 
 export const initialState: State = {
   students: [],
-  filteredStudents: []
+  filteredStudents: [],
 };
 
 export const stundentsReducer = (state: State = initialState, action: Action): State => {
@@ -19,19 +19,19 @@ export const stundentsReducer = (state: State = initialState, action: Action): S
     case 'students/update':
       return {
         ...state,
-        students: state.students.map((student) =>
+        filteredStudents: state.filteredStudents.map((student) =>
           student.id === action.payload.id ? action.payload : student,
         ),
       };
-      case "students/search":
-        const search=action.payload
-        
-        const regex = new RegExp(`^${search}`, 'i');
-        console.log(state.students.filter(student=>regex.test(student.name)));
-        
-      return{
-        ...state,filteredStudents:state.students.filter(student=>regex.test(student.name))
-      }
+    case 'students/search':
+      const search = action.payload;
+
+      const regex = new RegExp(`^${search}`, 'i');
+
+      return {
+        ...state,
+        filteredStudents: state.students.filter((student) => regex.test(student.name)),
+      };
 
     default:
       return state;
