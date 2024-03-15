@@ -4,7 +4,7 @@ import { Student } from '../../app/type/Student';
 import { useSelector } from 'react-redux';
 import UpdateStudent from './UpdateStudent';
 import FormAddStudent from './FormAddStudent';
-import FooterPage from '../Foooter/Footer'
+import FooterPage from '../Foooter/Footer';
 import './UpdatePage.scss';
 
 export function UpdatePage(): JSX.Element {
@@ -52,35 +52,40 @@ export function UpdatePage(): JSX.Element {
     dispatch({ type: 'students/load', payload: res.students });
   };
 
-  
-    
-    // <div className="UpdatePage">
-    //   <h2>Update page</h2>
-      
-    //   <FormAddStudent />
-    //   {students.map((student) => (
-    //     <UpdateStudent student={student} key={student.id} />
-    //   ))}
-    
-    // </div>
-    return (
-      <div>
-        {user ? (
+  // <div className="UpdatePage">
+  //   <h2>Update page</h2>
+
+  //   <FormAddStudent />
+  //   {students.map((student) => (
+  //     <UpdateStudent student={student} key={student.id} />
+  //   ))}
+
+  // </div>
+  return (
+    <div>
+      {user ? (
+        <>
           <div className="UpdatePage">
-      <h2>Update page</h2>
-      
-      <FormAddStudent />
-      {students.map((student) => (
-        <UpdateStudent student={student} key={student.id} />
-      ))}
-    
+            <h2>Update page</h2>
+
+            <FormAddStudent />
+            {students.map((student) => (
+              <UpdateStudent student={student} key={student.id} />
+            ))}
+          </div>
+          <FooterPage />
+        </>
+      ) : (
+        <div className="NoLog">
+          <div>
+            <a href="/" className="Anolog">
+              Залогинься!
+            </a>
+          </div>
+        </div>
+      )}
     </div>
-        ) : (
-          <a href="/">Залогинься!</a>
-        )}
-      </div>
-    );
-  ;
+  );
 }
 
 export default UpdatePage;

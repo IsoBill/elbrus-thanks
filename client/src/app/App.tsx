@@ -34,7 +34,6 @@ function App(): JSX.Element {
         <Route path="/update" element={<UpdatePage />} />
         <Route path="/main" element={<StudentMain />} />
       </Routes>
-      <FooterPage/>
     </div>
   );
 }

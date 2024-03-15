@@ -1,5 +1,5 @@
 .Navbar {
-  height: 100px;
+  height: 70px;
   background-color: #333;
   display: flex;
   justify-content: space-around;
@@ -20,6 +20,6 @@
 }
 
 .Navbar a:hover {
-  color: #ff7f50; /* Изменяем цвет при наведении */
+  color: #e2df39; /* Изменяем цвет при наведении */
   transform: scale(0.9); /* Уменьшаем размер при клике */
 }

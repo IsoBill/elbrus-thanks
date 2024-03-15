@@ -13,7 +13,7 @@
 }
 
 .authForm input {
-  width: 100%;
+  width: 100%; /* Уменьшим ширину инпутов, чтобы учесть padding */
   margin-bottom: 10px;
   padding: 8px;
   font-size: 16px;
