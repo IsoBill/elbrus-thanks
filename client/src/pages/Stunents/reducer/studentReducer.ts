@@ -1,4 +1,4 @@
-import { Action, State } from '../../../app/reducer/type';
+import { Action, State } from '../../../redux/type';
 
 export const initialState: State = {
   students: [],

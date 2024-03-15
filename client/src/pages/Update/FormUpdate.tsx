@@ -32,8 +32,8 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
     ).json();
 
     if (data.message === 'success') {
-      dispatch({ type:'students/update', payload: data.student });
-      onClose((prev)=> !prev)
+      dispatch({ type: 'students/update', payload: data.student });
+      onClose((prev) => !prev);
     }
   };
 
@@ -48,6 +48,8 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
         />
         <input
           type="number"
+          min={1}
+          max={3}
           placeholder="phase"
           value={phase}
           onChange={(e) => setPhase(e.target.value)}
