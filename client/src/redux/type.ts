@@ -1,5 +1,5 @@
-import { Student, StudentId } from '../app/type/Student';
-import { User } from '../pages/Auth/reducer/type';
+import type { Student, StudentId } from '../app/type/Student';
+import type { User } from '../pages/Auth/reducer/type';
 
 export type State = {
   students: Student[];
@@ -24,4 +24,5 @@ export type Action =
     }
   | { type: 'auth/login'; payload: User }
   | { type: 'auth/logout' }
-  | { type: 'auth/userCheck'; payload: User };
+  | { type: 'auth/userCheck'; payload: User }
+  | { type: 'students/search'; payload: string };
