@@ -3,6 +3,7 @@ import type { User } from '../pages/Auth/reducer/type';
 
 export type State = {
   students: Student[];
+  filteredStudents?:  Student[]
 };
 
 export type Action =

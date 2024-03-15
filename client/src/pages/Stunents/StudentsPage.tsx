@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect } from 'react';
@@ -10,7 +11,9 @@ import StudentItem from './StudentItem';
 
 export function StudentsPage(): JSX.Element {
   const students = useSelector((store: RootState) => store.students.students);
+  const filteredStudents = useSelector((store: RootState) => store.students.filteredStudents);
   const dispatch = useAppDispatch();
+  console.log(filteredStudents);
 
   const loadStudents = async (): Promise<void> => {
     const data: { message: string; students: Student[] } = await (

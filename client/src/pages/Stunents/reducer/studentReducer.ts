@@ -2,6 +2,7 @@ import type { Action, State } from '../../../redux/type';
 
 export const initialState: State = {
   students: [],
+  filteredStudents: []
 };
 
 export const stundentsReducer = (state: State = initialState, action: Action): State => {
@@ -24,9 +25,12 @@ export const stundentsReducer = (state: State = initialState, action: Action): S
       };
       case "students/search":
         const search=action.payload
+        
         const regex = new RegExp(`^${search}`, 'i');
+        console.log(state.students.filter(student=>regex.test(student.name)));
+        
       return{
-        ...state,students:state.students.filter(student=>regex.test(student.name))
+        ...state,filteredStudents:state.students.filter(student=>regex.test(student.name))
       }
 
     default:
