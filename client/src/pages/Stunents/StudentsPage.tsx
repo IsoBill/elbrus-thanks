@@ -24,34 +24,6 @@ export function StudentsPage(): JSX.Element {
     loadStudents();
   }, []);
 
-  const phase1 = async (): Promise<void> => {
-    const responce = await fetch('/api/student/phase1', {
-      method: 'GET',
-      headers: { 'Content-type': 'Application/json' },
-    });
-    const res: { message: string; students: Student[] } = await responce.json();
-    console.log(res);
-    dispatch({ type: 'students/load', payload: res.students });
-  };
-  const phase2 = async (): Promise<void> => {
-    const responce = await fetch('/api/student/phase2', {
-      method: 'GET',
-      headers: { 'Content-type': 'Application/json' },
-    });
-    const res: { message: string; students: Student[] } = await responce.json();
-    console.log(res);
-    dispatch({ type: 'students/load', payload: res.students });
-  };
-  const phase3 = async (): Promise<void> => {
-    const responce = await fetch('/api/student/phase3', {
-      method: 'GET',
-      headers: { 'Content-type': 'Application/json' },
-    });
-    const res: { message: string; students: Student[] } = await responce.json();
-    // console.log(res);
-    dispatch({ type: 'students/load', payload: res.students });
-  };
-
   // const sortDown = async (): Promise<void> =>{
   //   const responce=await fetch("/api/student/sort",{method:"GET", headers: { 'Content-type': 'Application/json' },body:JSON.stringify({students})})
   // }
@@ -62,16 +34,6 @@ export function StudentsPage(): JSX.Element {
       <SearchForm />
       {/* <button type='button' onClick={sortDown}>sortDown</button>
       <button type='button'>sortup</button> */}
-
-      <button type="button" onClick={phase1}>
-        Phase1
-      </button>
-      <button type="button" onClick={phase2}>
-        Phase2
-      </button>
-      <button type="button" onClick={phase3}>
-        Phase3
-      </button>
       {students.map((student) => (
         <StudentItem student={student} key={student.id} />
       ))}

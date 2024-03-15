@@ -1,0 +1,23 @@
+.Footer {
+    height: 100px;
+    background-color: #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    padding: 0 20px;
+  }
+  
+  .Footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 28px;
+    transition:
+      color 0.3s,
+      transform 0.3s;
+  }
+  
+  .Footer a:hover {
+    color: #ff7f50; /* Изменяем цвет при наведении */
+    transform: scale(0.9); /* Уменьшаем размер при клике */
+  }
