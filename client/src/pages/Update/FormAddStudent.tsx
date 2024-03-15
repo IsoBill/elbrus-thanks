@@ -3,18 +3,18 @@ import type { Student } from '../../app/type/Student';
 import { useAppDispatch } from '../../redux/store';
 
 
-type FormUpdateAddProps = {
+type FormAddProps = {
   student: Student;
 };
 
-export function FormAddStudent({ student }: FormUpdateAddProps): JSX.Element {
-  const [name, setName] = useState(student.name);
+export function FormAddStudent({ student }: FormAddProps): JSX.Element {
+  const [name, setName] = useState('');
   const dispatch = useAppDispatch();
   
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
       e.preventDefault();
       const data: { message: string; student: Student } = await (
-        await fetch('/api', {
+        await fetch('/api/student', {
           method: 'POST',
           headers: { 'Content-type': 'Application/json' },
           body: JSON.stringify({
@@ -24,6 +24,10 @@ export function FormAddStudent({ student }: FormUpdateAddProps): JSX.Element {
       ).json();
       if (data.message === 'success') {
         dispatch({ type: 'students/add', payload: data.student });
+        setName('');
+      }
+      else{
+        alert(data.message)
       }
     };
     return (

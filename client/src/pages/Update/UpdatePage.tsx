@@ -24,7 +24,7 @@ export function UpdatePage(): JSX.Element {
   return (
     <div className="UpdatePage">
       <h2>Update</h2>
-      <FormAddStudent student={student} />
+      <FormAddStudent student={name} />
       {students.map((student) => (
         <UpdateStudent student={student} key={student.id} />
       ))}
