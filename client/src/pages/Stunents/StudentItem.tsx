@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../redux/store';
 type StudentItemProps = {
   student: Student;
 };
+// console.log(123);
 
 export function StudentItem({ student }: StudentItemProps): JSX.Element {
   const dispatch = useAppDispatch();
