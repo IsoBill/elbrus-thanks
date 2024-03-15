@@ -8,21 +8,19 @@ type SearchFormProps = {};
 export function SearchForm({}: SearchFormProps): JSX.Element {
   const [search, setSearch] = useState('');
   const dispatch = useAppDispatch();
-  
 
-  const onHandleSwitch = async (e: React.ChangeEvent<HTMLInputElement>):Promise<void> => {
+  const onHandleSwitch = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const target = e.target.value;
+    console.log(target);
+    
     setSearch(target);
     // console.log(target);
     dispatch({ type: 'students/search', payload: target });
-  }
+  };
 
   return (
     <div className="SearchForm">
-      <form>
-        <input type="search" value={search} onChange={onHandleSwitch} />
-        <button>Найти</button>
-      </form>
+      <input type="search" value={search} onChange={onHandleSwitch} />
     </div>
   );
 }
