@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
+
 import SearchForm from './SearchForm';
 import type { Student } from '../../app/type/Student';
 import StudentItem from './StudentItem';
@@ -15,7 +16,8 @@ export function StudentsPage(): JSX.Element {
   const filteredStudents = useSelector((store: RootState) => store.students.filteredStudents);
   const dispatch = useAppDispatch();
   const [search, setSearch] = useState('');
-  // console.log(filteredStudents);
+  const user = useSelector((store: RootState) => store.auth.user);
+  console.log(user);
 
   const loadStudents = async (): Promise<void> => {
     const data: { message: string; students: Student[] } = await (
@@ -38,21 +40,27 @@ export function StudentsPage(): JSX.Element {
     dispatch({ type: 'students/search', payload: target });
   };
 
-  // const sortDown = async (): Promise<void> =>{
-  //   const responce=await fetch("/api/student/sort",{method:"GET", headers: { 'Content-type': 'Application/json' },body:JSON.stringify({students})})
-  // }
-  // console.log( search.length !== 0);
-
   return (
-    <div className="StudentMain">
-      <h2>Test</h2>
-      <div className="SearchForm">
-        <input type="search" value={search} onChange={onHandleSwitch} />
-      </div>
+    <div>
+      {user ? (
+        <div className="StudentMain">
+          <h2>Test</h2>
+          <div className="SearchForm">
+            <input
+              type="search"
+              value={search}
+              placeholder="Кого ищем?"
+              onChange={onHandleSwitch}
+            />
+          </div>
 
-      {filteredStudents.length === 0 && search.length === 0
-        ? students.map((student) => <StudentItem student={student} key={student.id} />)
-        : filteredStudents.map((student) => <StudentItem student={student} key={student.id} />)}
+          {filteredStudents.length === 0 && search.length === 0
+            ? students.map((student) => <StudentItem student={student} key={student.id} />)
+            : filteredStudents.map((student) => <StudentItem student={student} key={student.id} />)}
+        </div>
+      ) : (
+        <a href="/">Залогинься!</a>
+      )}
     </div>
   );
 }
