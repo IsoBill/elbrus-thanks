@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
-import './App.css';
+// import './App.css';
 import Navbar from '../pages/Navbar/Navbar';
 import StudentMain from '../pages/Stunents/StudentsPage';
 import { Route, Routes } from 'react-router-dom';
 import UpdatePage from '../pages/Update/UpdatePage';
-import AuthorizationPage from '../pages/Auth/AuthorizationPage';
-import { RootState, useAppDispatch } from '../redux/store';
+import AuthorizationPage from '../pages/Auth/AuthPage';
+import { useAppDispatch } from '../redux/store';
 import { User } from '../pages/Auth/reducer/type';
-import { useSelector } from 'react-redux';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
-  const user = useSelector((store: RootState) => store.auth.user);
 
   const checkUser = async (): Promise<void> => {
     const data: { message: string; user: User } = await (await fetch('api/auth/check')).json();
@@ -30,9 +28,9 @@ function App(): JSX.Element {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<StudentMain />} />
+        <Route path="/" element={<AuthorizationPage />} />
         <Route path="/update" element={<UpdatePage />} />
-        <Route path="/auth" element={<AuthorizationPage />} />
+        <Route path="/main" element={<StudentMain />} />
       </Routes>
     </div>
   );

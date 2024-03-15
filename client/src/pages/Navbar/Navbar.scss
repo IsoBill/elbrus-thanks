@@ -1,34 +1,23 @@
-.NavBar {
-    display: flex;
-    justify-content: center; // Центрирует контейнер ссылок
-    align-items: center; // Выравнивает контейнер ссылок по вертикали
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    position: fixed; // Фиксирует навигационный бар в верхней части страницы
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-   }
-   
-   .NavBar-links {
-    display: flex;
-    justify-content: space-between; // Распределяет ссылки равномерно по горизонтали с пространством между ними
-    width: 50%; // Ограничивает ширину контейнера ссылок, чтобы они были в середине
-   }
-   
-   .NavBar-update-container {
-    margin-left: 20px; // Добавляет отступ слева для контейнера ссылки "Update"
-   }
-   
-   .NavBar a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-   
-    &:hover {
-       color: #ddd;
-    }
-   }
-   
+.Navbar {
+  height: 100px;
+  background-color: #333;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff;
+  padding: 0 20px;
+}
+
+.Navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 28px;
+  transition:
+    color 0.3s,
+    transform 0.3s;
+}
+
+.Navbar a:hover {
+  color: #ff7f50; /* Изменяем цвет при наведении */
+  transform: scale(0.9); /* Уменьшаем размер при клике */
+}
