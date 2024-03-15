@@ -43,11 +43,11 @@ export function StudentItem({ student }: StudentItemProps): JSX.Element {
   return (
     <div className="StudentItem">
       <div>{student.name}</div>
-      <button type="button" onClick={() => onhandlePlus(student.id)}>
+      <button className="plus" type="button" onClick={() => onhandlePlus(student.id)}>
         +
       </button>
       <div>{student.thanks}</div>
-      <button type="button" onClick={() => onhandleMinus(student.id)}>
+      <button className="minus" type="button" onClick={() => onhandleMinus(student.id)}>
         -
       </button>
     </div>

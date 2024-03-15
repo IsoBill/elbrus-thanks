@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
-// import './SearchForm.scss';
+import './SearchForm.scss';
 
 type SearchFormProps = {};
 
@@ -12,7 +12,7 @@ export function SearchForm({}: SearchFormProps): JSX.Element {
   const onHandleSwitch = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const target = e.target.value;
     console.log(target);
-    
+
     setSearch(target);
     // console.log(target);
     dispatch({ type: 'students/search', payload: target });

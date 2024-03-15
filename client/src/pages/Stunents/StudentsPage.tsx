@@ -5,11 +5,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 import { useAppDispatch } from '../../redux/store';
-
-import SearchForm from './SearchForm';
 import type { Student } from '../../app/type/Student';
 import StudentItem from './StudentItem';
 import './StudentsPage.scss';
+import FooterPage from '../Foooter/Footer';
 
 export function StudentsPage(): JSX.Element {
   const students = useSelector((store: RootState) => store.students.students);
@@ -43,23 +42,34 @@ export function StudentsPage(): JSX.Element {
   return (
     <div>
       {user ? (
-        <div className="StudentMain">
-          <h2>Test</h2>
-          <div className="SearchForm">
-            <input
-              type="search"
-              value={search}
-              placeholder="Кого ищем?"
-              onChange={onHandleSwitch}
-            />
-          </div>
+        <>
+          <div className="StudentMain">
+            <h2>Thanks page</h2>
+            <div className="SearchForm">
+              <input
+                type="search"
+                value={search}
+                placeholder="Кого ищем?"
+                onChange={onHandleSwitch}
+              />
+            </div>
 
-          {filteredStudents.length === 0 && search.length === 0
-            ? students.map((student) => <StudentItem student={student} key={student.id} />)
-            : filteredStudents.map((student) => <StudentItem student={student} key={student.id} />)}
-        </div>
+            {filteredStudents.length === 0 && search.length === 0
+              ? students.map((student) => <StudentItem student={student} key={student.id} />)
+              : filteredStudents.map((student) => (
+                  <StudentItem student={student} key={student.id} />
+                ))}
+          </div>
+          <FooterPage />
+        </>
       ) : (
-        <a href="/">Залогинься!</a>
+        <div className="NoLog">
+          <div>
+            <a href="/" className="Anolog">
+              Залогинься!
+            </a>
+          </div>
+        </div>
       )}
     </div>
   );

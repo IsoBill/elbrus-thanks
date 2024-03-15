@@ -13,11 +13,22 @@
   justify-content: space-around;
 }
 
-.StudentItem .buttons button {
-  padding: 13px;
-  margin: 0 8px;
-  border: none;
+.StudentItem .minus {
+  padding: 5px 10px;
+  border: 2px;
   background-repeat: no-repeat;
-  background-color: #f5f5f5;
+  color: white;
+  font-size: 18px;
+  background-color: rgb(69, 32, 171);
+  cursor: pointer;
+}
+
+.StudentItem .plus {
+  padding: 5px 8px;
+  border: 2px;
+  background-repeat: no-repeat;
+  color: white;
+  font-size: 18px;
+  background-color: rgb(69, 32, 171);
   cursor: pointer;
 }
