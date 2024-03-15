@@ -37,9 +37,9 @@ export function StudentsPage(): JSX.Element {
       <SearchForm />
       {/* <button type='button' onClick={sortDown}>sortDown</button>
       <button type='button'>sortup</button> */}
-      {students.map((student) => (
-        <StudentItem student={student} key={student.id} />
-      ))}
+     {filteredStudents.length === 0
+        ? students.map((student) => <StudentItem student={student} key={student.id} />)
+        : filteredStudents.map((student) => <StudentItem student={student} key={student.id} />)}
     </div>
   );
 }
