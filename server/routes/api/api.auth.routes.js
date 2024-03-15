@@ -2,12 +2,13 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../db/models');
 const generateTokens = require('../../utils/authUtils');
-const configJWT = require('../../middleware/configJWT');
+const configJWT = require('../../config/configJWT');
 
 router.post('/', async (req, res) => {
   let user;
   try {
     const { login, password } = req.body;
+    console.log(login);
 
     user = await User.findOne({ where: { login } });
     if (!user) {
@@ -23,7 +24,7 @@ router.post('/', async (req, res) => {
       where: { id: user.id },
       attributes: ['login', 'id'],
     });
-
+    console.log(user, '123');
     const { accessToken, refreshToken } = generateTokens({ user });
 
     res
@@ -37,7 +38,7 @@ router.post('/', async (req, res) => {
       })
       .json({ message: 'success', user });
   } catch ({ message }) {
-    res.json({ message });
+    res.status(500).json({ error: message });
   }
 });
 
@@ -53,7 +54,7 @@ router.get('/check', async (req, res) => {
     }
     res.json({ message: 'Сначала войдите в свой аккаунт' });
   } catch ({ message }) {
-    res.json({ message });
+    res.status(500).json({ error: message });
   }
 });
 
@@ -62,7 +63,7 @@ router.get('/logout', (req, res) => {
     res.clearCookie(configJWT.access.type).clearCookie(configJWT.refresh.type);
     res.json({ message: 'success' });
   } catch ({ message }) {
-    res.json({ message });
+    res.status(500).json({ error: message });
   }
 });
 
