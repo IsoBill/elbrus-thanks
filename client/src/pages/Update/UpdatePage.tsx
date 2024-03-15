@@ -59,7 +59,7 @@ export function UpdatePage(): JSX.Element {
       {students.map((student) => (
         <UpdateStudent student={student} key={student.id} />
       ))}
-      <FooterPage/>
+    
     </div>
   );
 }
