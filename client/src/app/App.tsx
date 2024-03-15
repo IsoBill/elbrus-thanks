@@ -4,9 +4,10 @@ import Navbar from '../pages/Navbar/Navbar';
 import StudentMain from '../pages/Stunents/StudentsPage';
 import { Route, Routes } from 'react-router-dom';
 import UpdatePage from '../pages/Update/UpdatePage';
-import AuthorizationPage from '../pages/Auth/AuthPage';
 import { useAppDispatch } from '../redux/store';
 import { User } from '../pages/Auth/reducer/type';
+import AuthPage from '../pages/Auth/AuthPage';
+import './App.css';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -28,7 +29,7 @@ function App(): JSX.Element {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<AuthorizationPage />} />
+        <Route path="/" element={<AuthPage />} />
         <Route path="/update" element={<UpdatePage />} />
         <Route path="/main" element={<StudentMain />} />
       </Routes>

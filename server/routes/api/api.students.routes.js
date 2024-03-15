@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -46,7 +45,10 @@ router.put('/:id/thanks', async (req, res) => {
   try {
     const { id } = req.params;
     const { thanks } = req.body;
-    console.log(thanks);
+    if (thanks < 0) {
+      res.status(400).json({ message: 'Нельзя сделать меньше 0 "Спасибо" !' });
+      return;
+    }
     const result = await Student.update({ thanks }, { where: { id } });
     if (result[0]) {
       const student = await Student.findOne({ where: { id } });
@@ -65,15 +67,19 @@ router.post('/', async (req, res) => {
     const { name } = req.body;
     student = await Student.findOne({ where: { name } });
     if (student) {
-      res.status(400).json({ message: 'This student is already exist, rename him' });
+      res
+        .status(400)
+        .json({ message: 'This student is already exist, rename him' });
       return;
     }
     student = await Student.create({
-      name, thanks:0, phase:1
+      name,
+      thanks: 0,
+      phase: 1,
     });
 
     if (student) {
-      student = await Student.findOne({ where: {name}});
+      student = await Student.findOne({ where: { name } });
       res.status(201).json({ message: 'success', student });
     }
     res.status(400).json();
@@ -84,7 +90,7 @@ router.post('/', async (req, res) => {
 
 router.get('/phase1', async (req, res) => {
   try {
-    const students = await Student.findAll({ where: {phase: 1} });
+    const students = await Student.findAll({ where: { phase: 1 } });
     res.status(200).json({ message: 'success', students });
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -92,7 +98,7 @@ router.get('/phase1', async (req, res) => {
 });
 router.get('/phase2', async (req, res) => {
   try {
-    const students = await Student.findAll({ where: {phase: 2} });
+    const students = await Student.findAll({ where: { phase: 2 } });
     res.status(200).json({ message: 'success', students });
   } catch ({ message }) {
     res.status(500).json({ error: message });
@@ -100,7 +106,7 @@ router.get('/phase2', async (req, res) => {
 });
 router.get('/phase3', async (req, res) => {
   try {
-    const students = await Student.findAll({ where: {phase: 3} });
+    const students = await Student.findAll({ where: { phase: 3 } });
     res.status(200).json({ message: 'success', students });
   } catch ({ message }) {
     res.status(500).json({ error: message });

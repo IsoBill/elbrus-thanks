@@ -4,7 +4,7 @@ import { User } from './reducer/type';
 import { useNavigate } from 'react-router-dom';
 import './AuthPage.scss'; // Подключаем файл со стилями
 
-function AuthorizationPage(): JSX.Element {
+function AuthPage(): JSX.Element {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ function AuthorizationPage(): JSX.Element {
 
     if (data.message === 'success') {
       dispatch({ type: 'auth/login', payload: data.user });
-      navigate('/');
+      navigate('/main');
     }
   };
 
@@ -49,4 +49,4 @@ function AuthorizationPage(): JSX.Element {
   );
 }
 
-export default AuthorizationPage;
+export default AuthPage;

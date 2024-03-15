@@ -8,6 +8,7 @@ import { useAppDispatch } from '../../redux/store';
 import SearchForm from './SearchForm';
 import type { Student } from '../../app/type/Student';
 import StudentItem from './StudentItem';
+import './StudentsPage.scss';
 
 export function StudentsPage(): JSX.Element {
   const students = useSelector((store: RootState) => store.students.students);
@@ -40,7 +41,7 @@ export function StudentsPage(): JSX.Element {
   // const sortDown = async (): Promise<void> =>{
   //   const responce=await fetch("/api/student/sort",{method:"GET", headers: { 'Content-type': 'Application/json' },body:JSON.stringify({students})})
   // }
-// console.log( search.length !== 0);
+  // console.log( search.length !== 0);
 
   return (
     <div className="StudentMain">

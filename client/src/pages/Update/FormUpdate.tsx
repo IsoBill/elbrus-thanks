@@ -5,6 +5,7 @@
 import React, { SetStateAction, useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { Student } from '../../app/type/Student';
+import './FormUpdate.scss';
 
 type FormUpdateAddProps = {
   student: Student;
@@ -38,7 +39,8 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
   };
 
   return (
-    <div className="FormStudentAdd">
+    <div className="FormUpdate">
+      <p>Имя</p>
       <form onSubmit={onhadleSubmit}>
         <input
           type="text"
@@ -46,6 +48,7 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <p>Фаза</p>
         <input
           type="number"
           min={1}
@@ -54,7 +57,8 @@ function FormUpdate({ student, onClose }: FormUpdateAddProps): JSX.Element {
           value={phase}
           onChange={(e) => setPhase(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <p></p>
+        <button type="submit">Подтвердить</button>
       </form>
     </div>
   );
