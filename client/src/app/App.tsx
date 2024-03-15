@@ -8,6 +8,7 @@ import { useAppDispatch } from '../redux/store';
 import { User } from '../pages/Auth/reducer/type';
 import AuthPage from '../pages/Auth/AuthPage';
 import './App.css';
+import FooterPage from '../pages/Foooter/Footer';
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -33,6 +34,7 @@ function App(): JSX.Element {
         <Route path="/update" element={<UpdatePage />} />
         <Route path="/main" element={<StudentMain />} />
       </Routes>
+      <FooterPage/>
     </div>
   );
 }
