@@ -13,18 +13,22 @@ module.exports = (sequelize, DataTypes) => {
   }
   Task.init(
     {
-      text: {
+      name: {
         allowNull: false,
         type: DataTypes.TEXT,
       },
-      status: {
+      thanks: {
         allowNull: false,
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
+      },
+      phase: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
       },
     },
     {
       sequelize,
-      modelName: 'Task',
+      modelName: 'Student',
     }
   );
   return Task;

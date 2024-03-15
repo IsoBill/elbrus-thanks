@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "ToDoList",
+    "database": "ElbrusThanks",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }

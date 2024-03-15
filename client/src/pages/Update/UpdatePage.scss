@@ -1,0 +1,31 @@
+.UpdatePage {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; /* Установим высоту контейнера по высоте экрана */
+}
+
+.UpdatePage h2 {
+  font-size: 24px;
+  margin-bottom: 20px; /* Отступ снизу для разделения заголовка и формы */
+}
+
+/* Стили для формы */
+.FormAddStudent {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Стили для блока с информацией о студентах */
+.UpdateStudent {
+  width: 300px;
+  margin-top: 20px; /* Отступ сверху для разделения между элементами */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Можете добавить дополнительные стили для оформления информации о студентах */

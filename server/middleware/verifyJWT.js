@@ -1,7 +1,7 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const generateTokens = require('../utils/authUtils');
-const configJWT = require('./configJWT');
+const configJWT = require('../config/configJWT');
 
 function verifyRefreshToken(req, res, next) {
   try {
@@ -29,6 +29,7 @@ function verifyRefreshToken(req, res, next) {
 function verifyAccessToken(req, res, next) {
   try {
     const { access } = req.cookies;
+    console.log(req.cookies);
     const { user } = jwt.verify(access, process.env.ACCESS);
     res.locals.user = user;
     next();
