@@ -5,7 +5,7 @@ const jwtConfig = {
   },
   refresh: {
     type: 'refresh',
-    expiresIn: `${1000 * 60 * 60 * 12}`,
+    expiresIn: `${1000 * 60 * 30}`,
   },
 };
 

@@ -3,6 +3,7 @@
 import React from 'react';
 import type { Student } from '../../app/type/Student';
 import { useAppDispatch } from '../../redux/store';
+import './StudentItem.scss';
 
 type StudentItemProps = {
   student: Student;
@@ -32,8 +33,12 @@ export function StudentItem({ student }: StudentItemProps): JSX.Element {
     });
 
     const res: { message: string; student: Student } = await responce.json();
-    console.log(res);
-    dispatch({ type: 'students/update', payload: res.student });
+
+    if (res.message === 'success') {
+      dispatch({ type: 'students/update', payload: res.student });
+    } else {
+      alert(res.message);
+    }
   };
   return (
     <div className="StudentItem">
