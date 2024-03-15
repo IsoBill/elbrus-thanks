@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { User } from './reducer/type';
+import { useNavigate } from 'react-router-dom';
 
 function AuthorizationPage(): JSX.Element {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onhandleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
@@ -16,14 +18,16 @@ function AuthorizationPage(): JSX.Element {
         body: JSON.stringify({ login, password }),
       })
     ).json();
+
     if (data.message === 'success') {
-      dispatch({ type: 'auth' });
+      dispatch({ type: 'auth/login', payload: data.user });
+      navigate('/');
     }
   };
 
   return (
     <div>
-      <form>
+      <form className="authForm" onSubmit={onhandleSubmit}>
         <input
           type="text"
           name="login"
