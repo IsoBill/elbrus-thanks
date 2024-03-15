@@ -4,7 +4,7 @@ const { User } = require('../../db/models');
 const generateTokens = require('../../utils/authUtils');
 const configJWT = require('../../middleware/configJWT');
 
-router.post('/auth', async (req, res) => {
+router.post('/', async (req, res) => {
   let user;
   try {
     const { login, password } = req.body;

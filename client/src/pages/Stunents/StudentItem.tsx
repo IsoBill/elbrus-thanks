@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React from 'react';
-// import './StudentItem.scss';
-import { useSelector } from 'react-redux';
 import type { Student } from '../../app/type/Student';
 import { useAppDispatch } from '../../redux/store';
 
