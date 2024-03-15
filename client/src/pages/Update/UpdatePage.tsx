@@ -4,6 +4,7 @@ import { Student } from '../../app/type/Student';
 import { useSelector } from 'react-redux';
 import UpdateStudent from './UpdateStudent';
 import FormAddStudent from './FormAddStudent';
+import './UpdatePage.scss';
 
 export function UpdatePage(): JSX.Element {
   const students = useSelector((store: RootState) => store.students.students);
@@ -23,8 +24,8 @@ export function UpdatePage(): JSX.Element {
 
   return (
     <div className="UpdatePage">
-      <h2>Update</h2>
-      <FormAddStudent student={name} />
+      <h2>Update page</h2>
+      <FormAddStudent />
       {students.map((student) => (
         <UpdateStudent student={student} key={student.id} />
       ))}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAppDispatch } from '../../redux/store';
 import { User } from './reducer/type';
 import { useNavigate } from 'react-router-dom';
+import './AuthPage.scss'; // Подключаем файл со стилями
 
 function AuthorizationPage(): JSX.Element {
   const [login, setLogin] = useState('');
@@ -26,7 +27,7 @@ function AuthorizationPage(): JSX.Element {
   };
 
   return (
-    <div>
+    <div className="authContainer">
       <form className="authForm" onSubmit={onhandleSubmit}>
         <input
           type="text"
@@ -42,7 +43,7 @@ function AuthorizationPage(): JSX.Element {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">login</button>
+        <button type="submit">Войти</button>
       </form>
     </div>
   );
