@@ -69,6 +69,30 @@ router.put('/:id/thanks', async (req, res) => {
   }
 });
 
+router.post('/', async (req, res) => {
+  let student;
+  try {
+    const { name } = req.body;
+    student = await Student.findOne({ where: { name } });
+    console.log(movie);
+    if (student) {
+      res.status(400).json({ message: 'This student is already exist, rename him' });
+      return;
+    }
+    student = await Student.create({
+      name
+    });
+
+    if (student) {
+      movie = await Student.findOne({ where: { name}});
+      res.status(201).json({ message: 'success', movie });
+    }
+    res.status(400).json();
+  } catch ({ message }) {
+    res.status(500).json({ error: message });
+  }
+});
+
 router.get('/phase1', async (req, res) => {
   try {
     const students = await Student.findAll({ where: {phase: 1} });
